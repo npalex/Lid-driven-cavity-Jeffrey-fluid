@@ -1,6 +1,6 @@
-# **Lid-driven cavity flow of an incompressible, Newtonian fluid**
+# **Lid-driven cavity flow of an incompressible, Jeffrey fluid**
 
-&emsp; This program solves the continuity, incompressible Cauchy momentum equations, and the Jeffrey's viscoelastic fluid model in 2D, given by
+&emsp; This program solves the continuity, incompressible Cauchy momentum equations, and Jeffrey's viscoelastic fluid model in 2D, given by
 
 $$ \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0, $$
 
@@ -20,10 +20,10 @@ and
 
 $$ Wi\frac{\partial \tau_{yy}}{\partial t} + \tau_{yy} = 2\frac{\partial v}{\partial y}. $$
 
-where $u$ and $v$ are the components of the local fluid velocity in the $x$ and $y$ directions, $\tau_{xy}$ is the local shear stress, 
-and $\tau_{xx}$ and $\tau_{yy}$ are local normal stresses.
+where $u$ and $v$ are the components of the local fluid velocity in the $x$ and $y$ directions, $\tau_{xy}$ is the local "polymeric" shear stress, 
+and $\tau_{xx}$ and $\tau_{yy}$ are local, polymeric normal stresses.
 
-&emsp; The Reynolds number $Re$, the Weissenberg number $Wi$, and viscosity ratio $\beta$ are defined according to 
+&emsp; The Reynolds number $Re$, Weissenberg number $Wi$, and viscosity ratio $\beta$ are defined according to 
 
 $$Re = \frac{\rho U L}{\eta},$$
 
@@ -31,7 +31,7 @@ $$Re = \lambda \frac{U}{L},$$
 
 and
 
-$$ \beta = \frac{\eta_s}{\eta} $$
+$$ \beta = \frac{\eta_s}{\eta}. $$
 
 Here, $\rho$, $\eta$, $\eta_s$, $U$, and $L$ are the over all fluid density, fluid viscosity, solvent viscosity, lid speed, and lid length, respectively. The time scale $\bar t$ 
 for this problem is defined by the characteristic shear rate according to $\bar t = \frac{L}{U}$ and the inertial pressure scale was chosen, 
@@ -43,15 +43,19 @@ equal to $\bar p = \rho U^2$. The boundary conditions are no-slip and no-flow at
 
 ### **Step 1. Solve the convection equation:**
 
-&emsp;A Roe solver $\textemdash$ i.e., a locally linear, approximate Riemann solver based on the Godunov method $\textemdash$ is employed to evaulate $q = (u,v)$ satisfying:
+&emsp;A Roe solver $\textemdash$ i.e., a locally linear, approximate Riemann solver based on the Godunov method $\textemdash$ 
+is employed to evaulate $q = (u,v,\tau_{xx},\tau_{xy},\tau_{yy})$ satisfying:
 
 $$ q_t + \hat A \cdot q_x + \hat B \cdot q_y = 0 . $$
 
 where the Roe matrices $\hat A$ and $\hat B$ are apporoximate Jacobian matrices given by
 
 $$ \hat A =        \begin{bmatrix} 
-                                2\hat u & 0 \\
-                                \hat v & \hat u \end{bmatrix}, $$
+                                2\hat u & 0 & -\frac{1}{Re} & 0 & 0 \\
+								\hat v & \hat u & 0 & -\frac{1}{Re} & 0 \\
+								-\frac{2}{Wi} & 0 & 0 & 0 & 0 \\
+								0 & -\frac{1}{Wi} & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 0 \end{bmatrix}, $$
 				
 and
 

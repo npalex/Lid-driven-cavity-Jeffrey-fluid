@@ -99,15 +99,12 @@ $$ \psi = \begin{bmatrix}
 								-\frac{1}{Wi}\tau_{xy} \\
                                 -\frac{1}{Wi}\tau_{yy} \end{bmatrix}, $$
 								
-&emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. The u-velocity is updated via
-
-$$ u_t = \frac{1}{Re}(u_{xx} + u_{yy}). $$
-
-Two difference equations are used to advance successive time steps of $\frac{\Delta t}{2}$. The first equation is implict in the x-direction
+&emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. 
+Two difference equations are used to advance successive time steps of $\frac{\Delta t}{2}$. The first equation for the u-velocity is implict in the x-direction
 
 $$ U_{i,j}^{\*\*\*} = U_{i,j}^{\*\*} + \frac{\alpha}{2}\left(\delta^2_x U^{\*\*\*} + \delta^2_y U^{\*\*}\right) $$
 
-and the second equation is implicit in the y-direction
+and the second equation for the u-velocity is implicit in the y-direction
 
 $$ \widetilde U_{i,j} = U_{i,j}^{\*\*\*} + \frac{\alpha}{2}\left(\delta^2_x U^{\*\*\*} + \delta^2_y \widetilde U\right). $$
 

@@ -84,7 +84,7 @@ $$Q_{i,j}^{\*\*} = Q_{i,j}^{\*} - \frac{\Delta t}{\Delta y} \left( G_{i,j+\frac{
 
 where $F_{i-\frac{1}{2},j}$ is the numerical flux at the interface between cells $(i,j)$ and $(i-1,j)$ for the 1-dimensional problem in the x-direction and, similarly, $G_{i,j-\frac{1}{2}}$ is the flux at the interface between cells $(i,j)$ and $(i,j-1)$ for the 1D problem in the y-direction. In addition, monotenzied central flux limiters are used to achieve second order accuracy for this step where the solution is smooth. 
 
-### **Step 2. Update the stresses per source terms:** 
+### **Step 2. Update the stresses per source term:** 
 
 &emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. The u-velocity is updated via
 
@@ -95,9 +95,9 @@ where
 $$ \psi = \begin{bmatrix} 
                                 0 \\
 								0 \\
-								-\tau_xx \\
-								-\tau_xy \\
-                                -\tau_yy \end{bmatrix}, $$
+								-\frac{\tau_{xx}}{Wi} \\
+								-\frac{\tau_{xy}}{Wi} \\
+                                -\frac{\tau_{yy}}{Wi} \end{bmatrix}, $$
 
 ### **Step 3. Solve the diffusion equation:** 
 

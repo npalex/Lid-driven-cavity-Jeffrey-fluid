@@ -92,12 +92,12 @@ $$ q_t = \psi(q). $$
 
 where the source terms are given by
 
-$$ \psi = \begin{bmatrix} 
+$$ \psi(q) = \begin{bmatrix} 
                                 \frac{1}{Re}(u_{xx} + u_{yy}) \\
 								\frac{1}{Re}(v_{xx} + v_{yy}) \\
 								-\frac{1}{Wi}\tau_{xx} \\
 								-\frac{1}{Wi}\tau_{xy} \\
-                                -\frac{1}{Wi}\tau_{yy} \end{bmatrix}, $$
+                                -\frac{1}{Wi}\tau_{yy} \end{bmatrix}. $$
 								
 &emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. 
 Two difference equations are used to advance successive time steps of $\frac{\Delta t}{2}$. The first equation for the u-velocity is implict in the x-direction

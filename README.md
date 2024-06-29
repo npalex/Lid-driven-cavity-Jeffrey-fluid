@@ -88,7 +88,7 @@ where $F_{i-\frac{1}{2},j}$ is the numerical flux at the interface between cells
 
 During this step, the following equation is solved
 
-$$ q_t = \psi(q). $$
+$$ q_t = \psi(q), $$
 
 where the source terms are given by
 
@@ -108,11 +108,11 @@ and the second equation for the u-velocity is implicit in the y-direction
 
 $$ \widetilde U_{i,j} = U_{i,j}^{\*\*\*} + \frac{\alpha}{2}\left(\delta^2_x U^{\*\*\*} + \delta^2_y \widetilde U\right). $$
 
-Similar equations are used to update the v-velocity. The parameter $\alpha$ is defined by
+The parameter $\alpha$ is defined by
 
 $$ \alpha = \frac{\beta}{Re}\frac{\Delta t}{(\Delta x)^2},$$
 
-and $\delta^2_x$ denotes the central difference of the 2nd partial derivative with respect to $x$.
+and $\delta^2_x$ denotes the central difference of the 2nd partial derivative with respect to $x$. Similar equations are used to update the v-velocity. 
 
 ### **Step 3. Update the edge velocities for diffusion:**
 

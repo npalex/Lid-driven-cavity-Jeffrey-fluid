@@ -93,8 +93,8 @@ $$ q_t = \psi(q), $$
 where the source terms are given by
 
 $$ \psi(q) = \begin{bmatrix} 
-                                \frac{1}{Re}(u_{xx} + u_{yy}) \\
-								\frac{1}{Re}(v_{xx} + v_{yy}) \\
+                                \frac{\beta}{Re}(u_{xx} + u_{yy}) \\
+								\frac{\beta}{Re}(v_{xx} + v_{yy}) \\
 								-\frac{1}{Wi}\tau_{xx} \\
 								-\frac{1}{Wi}\tau_{xy} \\
                                 -\frac{1}{Wi}\tau_{yy} \end{bmatrix}. $$

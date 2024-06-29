@@ -84,23 +84,20 @@ $$Q_{i,j}^{\*\*} = Q_{i,j}^{\*} - \frac{\Delta t}{\Delta y} \left( G_{i,j+\frac{
 
 where $F_{i-\frac{1}{2},j}$ is the numerical flux at the interface between cells $(i,j)$ and $(i-1,j)$ for the 1-dimensional problem in the x-direction and, similarly, $G_{i,j-\frac{1}{2}}$ is the flux at the interface between cells $(i,j)$ and $(i,j-1)$ for the 1D problem in the y-direction. In addition, monotenzied central flux limiters are used to achieve second order accuracy for this step where the solution is smooth. 
 
-### **Step 2. Update the stresses per source term:** 
+### **Step 2. Solve the diffusion equation:** 
 
-&emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. The u-velocity is updated via
-
+During this step, the following equation is solved
 $$ q_t = \psi(q). $$
 
-where 
+where the source terms are given by
 
 $$ \psi = \begin{bmatrix} 
-                                0 \\
-								0 \\
-								-\frac{\tau_{xx}}{Wi} \\
-								-\frac{\tau_{xy}}{Wi} \\
-                                -\frac{\tau_{yy}}{Wi} \end{bmatrix}, $$
-
-### **Step 3. Solve the diffusion equation:** 
-
+                                \frac{1}{Re}(u_{xx} + u_{yy}) \\
+								\frac{1}{Re}(v_{xx} + v_{yy}) \\
+								-\frac{1}{Wi}\tau_{xx} \\
+								-\frac{1}{Wi}\tau_{xy} \\
+                                -\frac{1}{Wi}\tau_{yy} \end{bmatrix}, $$
+								
 &emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. The u-velocity is updated via
 
 $$ u_t = \frac{1}{Re}(u_{xx} + u_{yy}). $$
@@ -119,13 +116,13 @@ $$ \alpha = \frac{\beta}{Re}\frac{\Delta t}{(\Delta x)^2},$$
 
 and $\delta^2_x$ denotes the central difference of the 2nd partial derivative with respect to $x$.
 
-### **Step 4. Update the edge velocities for diffusion:**
+### **Step 3. Update the edge velocities for diffusion:**
 
 &emsp; The velocities at the edges of each grid cell are updated via linear interpolation:
 
 $$ \widetilde q_{i-\frac{1}{2},j} = \frac{\widetilde Q_{i-1,j} + \widetilde Q_{i,j}}{2} $$
 
-### **Step 5. Compute the pressure distribution:**
+### **Step 4. Compute the pressure distribution:**
 
 &emsp;The divergence of the equation above provides a Laplacian equation for the pressure,
 
@@ -137,7 +134,7 @@ which is then discretized with Nuemann boundary conditions to produce a system o
 
 $$ q_{i,j}^{n+1} = \widetilde q_{i,j} -\Delta t\nabla p^{n+1}$$
 
-### **Step 6. Update the edge velocities for pressure-driven flow:**
+### **Step 5. Update the edge velocities for pressure-driven flow:**
 
 &emsp; The edge velocities are determined by using central differences for the pressure gradient via
 
@@ -147,7 +144,7 @@ and
 
 $$ v_{i,j-\frac{1}{2}}^{n+1} = \widetilde v_{i,j-\frac{1}{2}} - \Delta t \left( \frac{p_{i,j}^{n+1} - p_{i,j-1}^{n+1}}{\Delta y}\right) $$
 
-### **Step 7. Update the cell-centered velocities for pressure-driven flow:**
+### **Step 6. Update the cell-centered velocities for pressure-driven flow:**
 
 &emsp;Finally, the cell-centered velocities are determined by using central differences for the pressure gradient according to
 

@@ -74,7 +74,7 @@ and
 
 $$ \hat v_{i-\frac{1}{2},j} = \frac{V_{i,j} + V_{i-1,j}}{2}$$
 
-Dimensional splitting via the donor cell upwind method (DCU) is used to advanced the cell-centered velocities $Q=(U,V)$ forward in time via sweeps in the x-direction
+Dimensional splitting via the donor cell upwind method (DCU) is used to advanced the cell-centered velocities $Q=(U,V,T_{xx},T_{xy},T_{yy})$ forward in time via sweeps in the x-direction
 
 $$Q_{i,j}^{\*} = Q^n_{i,j} - \frac{\Delta t}{\Delta x} \left( F_{i+\frac{1}{2},j}^{n} - F_{i-\frac{1}{2},j}^{n}\right). $$
 
@@ -83,8 +83,6 @@ followed by sweeps in the y-direction
 $$Q_{i,j}^{\*\*} = Q_{i,j}^{\*} - \frac{\Delta t}{\Delta y} \left( G_{i,j+\frac{1}{2}}^{\*} - G_{i,j-\frac{1}{2}}^{\*}\right). $$
 
 where $F_{i-\frac{1}{2},j}$ is the numerical flux at the interface between cells $(i,j)$ and $(i-1,j)$ for the 1-dimensional problem in the x-direction and, similarly, $G_{i,j-\frac{1}{2}}$ is the flux at the interface between cells $(i,j)$ and $(i,j-1)$ for the 1D problem in the y-direction. In addition, monotenzied central flux limiters are used to achieve second order accuracy for this step where the solution is smooth. 
-
-&emsp; Note, a transverse Riemann solver (rpt2_cavity_roe.f90) has also been defined for this problem so that the corner-transport upwind method can be used instead of the DCU method if desired.
 
 ### **Step 2. Solve the diffusion equation:** 
 

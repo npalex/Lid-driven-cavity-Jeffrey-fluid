@@ -74,7 +74,7 @@ and
 
 $$ \hat v_{i-\frac{1}{2},j} = \frac{V_{i,j} + V_{i-1,j}}{2}$$
 
-Dimensional splitting via the donor cell upwind method (DCU) is used to advanced the cell-centered velocities $Q=(U,V,T_{xx},T_{xy},T_{yy})$ forward in time via sweeps in the x-direction
+Dimensional splitting via the donor cell upwind method (DCU) is used to advanced the cell-centered velocities and stresses $Q=(U,V,T_{xx},T_{xy},T_{yy})$ forward in time via sweeps in the x-direction
 
 $$Q_{i,j}^{\*} = Q^n_{i,j} - \frac{\Delta t}{\Delta x} \left( F_{i+\frac{1}{2},j}^{n} - F_{i-\frac{1}{2},j}^{n}\right). $$
 
@@ -84,33 +84,48 @@ $$Q_{i,j}^{\*\*} = Q_{i,j}^{\*} - \frac{\Delta t}{\Delta y} \left( G_{i,j+\frac{
 
 where $F_{i-\frac{1}{2},j}$ is the numerical flux at the interface between cells $(i,j)$ and $(i-1,j)$ for the 1-dimensional problem in the x-direction and, similarly, $G_{i,j-\frac{1}{2}}$ is the flux at the interface between cells $(i,j)$ and $(i,j-1)$ for the 1D problem in the y-direction. In addition, monotenzied central flux limiters are used to achieve second order accuracy for this step where the solution is smooth. 
 
-### **Step 2. Solve the diffusion equation:** 
+### **Step 2. Update the stresses per source terms:** 
 
-&emsp; An alternating direction implicit (ADI) method is employed to update the numerical solution for diffusion via
+&emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. The u-velocity is updated via
 
-$$ q_t = \frac{1}{Re}(q_{xx} + q_{yy}). $$
+$$ q_t = \psi(q). $$
+
+where 
+
+$$ \psi = \begin{bmatrix} 
+                                0 \\
+								0 \\
+								-\tau_xx \\
+								-\tau_xy \\
+                                -\tau_yy \end{bmatrix}, $$
+
+### **Step 3. Solve the diffusion equation:** 
+
+&emsp; An alternating direction implicit (ADI) method is employed to update the velocities for diffusion. The u-velocity is updated via
+
+$$ u_t = \frac{1}{Re}(u_{xx} + u_{yy}). $$
 
 Two difference equations are used to advance successive time steps of $\frac{\Delta t}{2}$. The first equation is implict in the x-direction
 
-$$ Q_{i,j}^{\*\*\*} = Q_{i,j}^{\*\*} + \frac{\alpha}{2}\left(\delta^2_x Q^{\*\*\*} + \delta^2_y Q^{\*\*}\right) $$
+$$ U_{i,j}^{\*\*\*} = U_{i,j}^{\*\*} + \frac{\alpha}{2}\left(\delta^2_x U^{\*\*\*} + \delta^2_y U^{\*\*}\right) $$
 
 and the second equation is implicit in the y-direction
 
-$$ \widetilde Q_{i,j} = Q_{i,j}^{\*\*\*} + \frac{\alpha}{2}\left(\delta^2_x Q^{\*\*\*} + \delta^2_y \widetilde Q\right). $$
+$$ \widetilde U_{i,j} = U_{i,j}^{\*\*\*} + \frac{\alpha}{2}\left(\delta^2_x U^{\*\*\*} + \delta^2_y \widetilde U\right). $$
 
-The parameter $\alpha$ is defined by
+Similar equations are used to update the v-velocity. The parameter $\alpha$ is defined by
 
-$$ \alpha = \frac{\Delta t}{(\Delta x)^2Re},$$
+$$ \alpha = \frac{\beta}{Re}\frac{\Delta t}{(\Delta x)^2},$$
 
 and $\delta^2_x$ denotes the central difference of the 2nd partial derivative with respect to $x$.
 
-### **Step 3. Update the edge velocities for diffusion:**
+### **Step 4. Update the edge velocities for diffusion:**
 
 &emsp; The velocities at the edges of each grid cell are updated via linear interpolation:
 
 $$ \widetilde q_{i-\frac{1}{2},j} = \frac{\widetilde Q_{i-1,j} + \widetilde Q_{i,j}}{2} $$
 
-### **Step 4. Compute the pressure distribution:**
+### **Step 5. Compute the pressure distribution:**
 
 &emsp;The divergence of the equation above provides a Laplacian equation for the pressure,
 
@@ -122,7 +137,7 @@ which is then discretized with Nuemann boundary conditions to produce a system o
 
 $$ q_{i,j}^{n+1} = \widetilde q_{i,j} -\Delta t\nabla p^{n+1}$$
 
-### **Step 5. Update the edge velocities for pressure-driven flow:**
+### **Step 6. Update the edge velocities for pressure-driven flow:**
 
 &emsp; The edge velocities are determined by using central differences for the pressure gradient via
 
@@ -132,7 +147,7 @@ and
 
 $$ v_{i,j-\frac{1}{2}}^{n+1} = \widetilde v_{i,j-\frac{1}{2}} - \Delta t \left( \frac{p_{i,j}^{n+1} - p_{i,j-1}^{n+1}}{\Delta y}\right) $$
 
-### **Step 6. Update the cell-centered velocities for pressure-driven flow:**
+### **Step 7. Update the cell-centered velocities for pressure-driven flow:**
 
 &emsp;Finally, the cell-centered velocities are determined by using central differences for the pressure gradient according to
 

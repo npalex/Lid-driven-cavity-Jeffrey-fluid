@@ -8,23 +8,30 @@ $$ Re\left( \frac{\partial u}{\partial t} + \frac{\partial u^2}{\partial x} + \f
 	+ \frac{\partial p}{\partial x}\right) - \frac{\partial \tau_{xx}}{\partial x} - \frac{\partial \tau_{xy}}{\partial y} = 
     \beta \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), $$
 
-and
-
 $$ Re\left( \frac{\partial v}{\partial t} + \frac{\partial (u v)}{\partial x} + \frac{\partial v^2}{\partial y} 
 	+ \frac{\partial p}{\partial y}\right) - \frac{\partial \tau_{xy}}{\partial x} - \frac{\partial \tau_{yy}}{\partial y}= 
-    \beta \left( \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right). $$
+    \beta \left( \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right), $$
+	
+$$ Wi\frac{\partial \tau_{xx}}{\partial t} - 2\frac{\partial u}{\partial x} = -\tau_{xx}, $$
+
+$$  Wi\frac{\partial \tau_{xy}}{\partial t} - \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = -\tau_{xy}, $$
+
+and
+
+$$ Wi\frac{\partial \tau_{yy}}{\partial t} - 2\frac{\partial v}{\partial y} = -\tau_{yy}. $$
 
 &emsp; Here, the Reynolds number is defined according to 
 
 $$Re = \frac{\rho U L}{\eta},$$
 
-where $\rho$, $\eta$, $U$, and $L$ are the over all fluid density, fluid viscosity, lid speed, and lid length, respectively, and $u$ and $v$ are the non-dimensional components of the fluid velocity in the $x$ and $y$ directions. The time scale $\bar t$ for this problem is defined by the characteristic shear rate according to $\bar t = \frac{L}{U}$ and the inertial pressure scale was chosen, equal to $\bar p = \rho U^2$. The boundary conditions are no-slip and no-flow at the cavity walls and the fluid is initially at rest. 
-
 and the viscosity ratio is given by
 
 $$ \beta = \frac{\eta_s}{\eta} $$
 
-where $eta_s$ is the solvent viscosity.
+Here, $\rho$, $\eta$, $\eta_s$, $U$, and $L$ are the over all fluid density, fluid viscosity, solvent viscosity, lid speed, and lid length, respectively, 
+and $u$ and $v$ are the non-dimensional components of the fluid velocity in the $x$ and $y$ directions. The time scale $\bar t$ 
+for this problem is defined by the characteristic shear rate according to $\bar t = \frac{L}{U}$ and the inertial pressure scale was chosen, 
+equal to $\bar p = \rho U^2$. The boundary conditions are no-slip and no-flow at the cavity walls and the fluid is initially at rest. 
  
 ## **Numerical Scheme:**
 &emsp; Following Lee and Leveque (2003),<sup>1</sup> a fractional step approach is used to solve the system of equations above, which decomposes the problem into the following steps:

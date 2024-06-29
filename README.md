@@ -87,6 +87,7 @@ where $F_{i-\frac{1}{2},j}$ is the numerical flux at the interface between cells
 ### **Step 2. Solve the diffusion equation:** 
 
 During this step, the following equation is solved
+
 $$ q_t = \psi(q). $$
 
 where the source terms are given by

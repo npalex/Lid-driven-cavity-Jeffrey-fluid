@@ -60,8 +60,11 @@ $$ \hat A =        \begin{bmatrix}
 and
 
 $$ \hat B =        \begin{bmatrix} 
-                                \hat v & \hat u \\
-                                0 & 2 \hat v \end{bmatrix}. $$
+                                \hat v & \hat u & 0 & -\frac{1}{Re} & 0 \\
+								0 & 2\hat v & 0 & 0 & -\frac{1}{Re} \\
+								0 & 0 & 0 & 0 & 0 \\
+								-\frac{1}{Wi} & 0 & 0 & 0 & 0 \\
+                                0 & -\frac{2}{Wi} & 0 & 0 & 0 \end{bmatrix}, $$
 
 Here, $\hat u$ and $\hat v$ are Roe averages (in this case, they are linear interpolations of cell-centered velocities) defined at the edge of each grid cell. For example, the Roe averages used to evaluate the matrix $A$ are given by
 

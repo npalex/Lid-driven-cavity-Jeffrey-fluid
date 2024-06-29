@@ -20,16 +20,20 @@ and
 
 $$ Wi\frac{\partial \tau_{yy}}{\partial t} + \tau_{yy} = 2\frac{\partial v}{\partial y}. $$
 
-&emsp; Here, the Reynolds number is defined according to 
+where $u$ and $v$ are the components of the local fluid velocity in the $x$ and $y$ directions, $\tau_{xy}$ is the local shear stress, 
+and $\tau_{xx}$ and $\tau_{yy}$ are local normal stresses.
+
+&emsp; The Reynolds number $Re$, the Weissenberg number $Wi$, and viscosity ratio $\beta$ are defined according to 
 
 $$Re = \frac{\rho U L}{\eta},$$
 
-and the viscosity ratio is given by
+$$Re = \lambda \frac{U}{L},$$
+
+and
 
 $$ \beta = \frac{\eta_s}{\eta} $$
 
-Here, $\rho$, $\eta$, $\eta_s$, $U$, and $L$ are the over all fluid density, fluid viscosity, solvent viscosity, lid speed, and lid length, respectively, 
-and $u$ and $v$ are the non-dimensional components of the fluid velocity in the $x$ and $y$ directions. The time scale $\bar t$ 
+Here, $\rho$, $\eta$, $\eta_s$, $U$, and $L$ are the over all fluid density, fluid viscosity, solvent viscosity, lid speed, and lid length, respectively. The time scale $\bar t$ 
 for this problem is defined by the characteristic shear rate according to $\bar t = \frac{L}{U}$ and the inertial pressure scale was chosen, 
 equal to $\bar p = \rho U^2$. The boundary conditions are no-slip and no-flow at the cavity walls and the fluid is initially at rest. 
  

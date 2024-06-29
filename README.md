@@ -12,13 +12,13 @@ $$ Re\left( \frac{\partial v}{\partial t} + \frac{\partial (u v)}{\partial x} + 
 	+ \frac{\partial p}{\partial y}\right) - \frac{\partial \tau_{xy}}{\partial x} - \frac{\partial \tau_{yy}}{\partial y}= 
     \beta \left( \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right), $$
 	
-$$ Wi\frac{\partial \tau_{xx}}{\partial t} - 2\frac{\partial u}{\partial x} = -\tau_{xx}, $$
+$$ Wi\frac{\partial \tau_{xx}}{\partial t} + \tau_{xx} = 2\frac{\partial u}{\partial x}, $$
 
-$$  Wi\frac{\partial \tau_{xy}}{\partial t} - \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = -\tau_{xy}, $$
+$$  Wi\frac{\partial \tau_{xy}}{\partial t} + \tau_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}, $$
 
 and
 
-$$ Wi\frac{\partial \tau_{yy}}{\partial t} - 2\frac{\partial v}{\partial y} = -\tau_{yy}. $$
+$$ Wi\frac{\partial \tau_{yy}}{\partial t} + \tau_{yy} = 2\frac{\partial v}{\partial y}. $$
 
 &emsp; Here, the Reynolds number is defined according to 
 

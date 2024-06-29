@@ -1,10 +1,11 @@
 # **Lid-driven cavity flow of an incompressible, Newtonian fluid**
 
-&emsp; This program solves the continuity and incompressible Navier Stokes equations in 2D, given by
+&emsp; This program solves the continuity, incompressible Cauchy momentum equations, and the Jeffrey's viscoelastic fluid model in 2D, given by
 
 $$ \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0, $$
 
-$$ Re\left( \frac{\partial u}{\partial t} + \frac{\partial u^2}{\partial x} + \frac{\partial (u v)}{\partial y} + \frac{\partial p}{\partial x}\right) = 
+$$ Re\left( \frac{\partial u}{\partial t} + \frac{\partial u^2}{\partial x} + \frac{\partial (u v)}{\partial y} 
+	+ \frac{\partial p}{\partial x}\right) + \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} = 
     \beta \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), $$
 
 and

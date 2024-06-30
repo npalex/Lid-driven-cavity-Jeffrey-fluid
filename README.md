@@ -116,7 +116,7 @@ and $\delta^2_x$ denotes the central difference of the 2nd partial derivative wi
 
 ### **Step 3. Update the edge velocities for diffusion:**
 
-&emsp;So far, the solution $\widetilde q$ is not divergence free. In order to satisfy continuity, the vector field $(\widetilde u, \widetilde v)$ is projected into a divergence-free vector field by correcting the result for pressure-driven flow via
+&emsp;So far, the velocity field $(\widetilde u, \widetilde v)$ is not divergence free. In order to satisfy continuity, the vector field $(\widetilde u, \widetilde v)$ is projected into a divergence-free vector field by correcting the result for pressure-driven flow via
 
 $$ u_{i,j}^{n+1} = \widetilde u_{i,j} -\Delta t\nabla p^{n+1}$$
 

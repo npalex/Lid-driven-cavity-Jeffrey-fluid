@@ -122,7 +122,7 @@ $$ \widetilde q_{i-\frac{1}{2},j} = \frac{\widetilde Q_{i-1,j} + \widetilde Q_{i
 
 ### **Step 4. Compute the pressure distribution:**
 
-&emsp;So far, the vector field $(\widetilde u, \widetilde v)$ is not divergence free. In order to satisfy continuity, $(\widetilde u, \widetilde v)$ is projected into a divergence-free vector field by correcting the result for pressure-driven flow via
+&emsp;So far, the velocity field $(\widetilde u, \widetilde v)$ is not divergence free. In order to satisfy continuity, $(\widetilde u, \widetilde v)$ is projected into a divergence-free vector field by correcting the result for pressure-driven flow via
 
 $$ u_{i,j}^{n+1} = \widetilde u_{i,j} -\Delta t\nabla p^{n+1}$$
 
@@ -130,9 +130,13 @@ and
 
 $$ v_{i,j}^{n+1} = \widetilde v_{i,j} -\Delta t\nabla p^{n+1}$$
 
-&emsp;The divergence of the equation above provides a Laplacian equation for the pressure,
+&emsp; In order to acquire the pressure distribtuion, the divergence of the equation above provides a Laplacian equation for the pressure,
 
-$$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \nabla \cdot \widetilde q_{i,j} ,$$
+$$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \nabla \cdot \widetilde u_{i,j} ,$$
+
+and
+
+$$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \nabla \cdot \widetilde v_{i,j} ,$$
 
 which is then discretized with Nuemann boundary conditions to produce a system of linear equations, $Ax = b$. 
 However, the matrix $A$ is singular because the equation set has an inifinite number of solutions within an arbitrary reference pressure. 

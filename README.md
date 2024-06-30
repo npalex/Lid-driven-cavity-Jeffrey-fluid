@@ -116,9 +116,13 @@ and $\delta^2_x$ denotes the central difference of the 2nd partial derivative wi
 
 ### **Step 3. Update the edge velocities for diffusion:**
 
-&emsp; The velocities at the edges of each grid cell are updated via linear interpolation:
+&emsp; The velocities at the edges of each grid cell are updated via linear interpolation according to
 
-$$ \widetilde q_{i-\frac{1}{2},j} = \frac{\widetilde Q_{i-1,j} + \widetilde Q_{i,j}}{2} $$
+$$ \widetilde u_{i-\frac{1}{2},j} = \frac{\widetilde U_{i-1,j} + \widetilde U_{i,j}}{2} $$
+
+and
+
+$$ \widetilde v_{i-\frac{1}{2},j} = \frac{\widetilde V_{i-1,j} + \widetilde V_{i,j}}{2} $$
 
 ### **Step 4. Compute the pressure distribution:**
 

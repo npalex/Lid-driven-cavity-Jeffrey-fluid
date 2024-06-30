@@ -15,7 +15,7 @@ from io import StringIO
 import pandas as pd
 
 #-- extract constants from fort.q000
-f = np.genfromtxt(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/fort.q0000', usecols=np.arange(0,1))
+f = np.genfromtxt(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/fort.q0000', usecols=np.arange(0,1))
 
 #-- define constants
 mx = int(f[2])                # total number of cells in x
@@ -28,13 +28,13 @@ dy = f[7]                     # grid spacing in y
 
 
 #-- extract the number of output times from claw.data
-g = np.genfromtxt(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/claw.data', usecols=np.arange(0,1))
+g = np.genfromtxt(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/claw.data', usecols=np.arange(0,1))
 steps = int(g[9])                                 # number of time steps
 t_final = g[10]                                   # final time
 meqn = 7                                          # number of governing equations
 
 #-- print parameters
-with open(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/setprob.data', 'r') as f:
+with open(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/setprob.data', 'r') as f:
     print(f.read())
 
 #-- initialize arrays 
@@ -45,16 +45,16 @@ for k in range(0, meqn):
     for i in range(0, steps+1):
        
         if i<10:
-            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/fort.q000' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn)) #sep = '    '
+            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/fort.q000' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn)) #sep = '    '
             
         elif i<100:
-            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/fort.q00' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn))
+            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/fort.q00' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn))
 
         elif i<1000:
-            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/fort.q0' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn))
+            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/fort.q0' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn))
 
         else:
-            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey/_output/fort.q' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn))
+            f = pd.read_csv(r'/home/npalex/Lid-driven-cavity-Jeffrey-fluid/_output/fort.q' + str(i), skiprows=8, dtype=float, names = None, header = None, sep = '\s+', usecols=np.arange(0,meqn))
 
         f = f.values
         f = f.T

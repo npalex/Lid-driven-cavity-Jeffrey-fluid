@@ -42,8 +42,8 @@ def setrun(claw_pkg='classic'):
 #    probdata.add_param('Ma', 0.5, 'Mach number')
 #    probdata.add_param('E' , 0.1, 'Elasticity number')
     probdata.add_param('Re' , 0.1, 'Reynolds number')
-    probdata.add_param('Wi' , 5.0, 'Weissenberg number')
-    probdata.add_param('gamma' , 0.0, 'viscosity ratio')
+    probdata.add_param('Wi' , 1000.0, 'Weissenberg number')
+    probdata.add_param('gamma' , 0.001, 'viscosity ratio')
     
     #------------------------------------------------------------------
     # Standard Clawpack parameters to be written to claw.data:
@@ -120,7 +120,7 @@ def setrun(claw_pkg='classic'):
         # Output ntimes frames at equally spaced times up to tfinal:
         # Can specify num_output_times = 0 for no output
         clawdata.num_output_times = 200
-        clawdata.tfinal = 20.0
+        clawdata.tfinal = 10.0
         clawdata.output_t0 = True  # output at initial (or restart) time?
         
     elif clawdata.output_style == 2:

@@ -94,7 +94,7 @@ def fplot(frame_number):
     ax.clear()
     
     #-- plot pressure distribution
-    ax.pcolormesh(xgrid, ygrid, q[5,frame_number,:,:], cmap = 'coolwarm',vmin =-5, vmax = 5) #--cmap = 'GnBu'
+    ax.pcolormesh(xgrid, ygrid, q[5,frame_number,:,:], cmap = 'coolwarm',vmin =-5, vmax = 5)
     
     #-- plot velocity distribution
     ax.quiver(x[::q_step], y[::q_step], q[0,frame_number,::q_step,::q_step], q[1,frame_number,::q_step,::q_step], scale_units = 'xy', scale = 1)
@@ -131,7 +131,7 @@ q_step = 1                           # quiver plot spacing
 ax.axis('square')
 p = ax.pcolormesh(xgrid, ygrid, q[2,0,:,:], cmap = 'coolwarm',vmin =-1, vmax = 1)
 cbar = fig.colorbar(p, fraction = 0.045, pad = 0.05, ticks = np.arange(-1, 1.2, .2))
-cbar.set_label('$\u03C4_{xx}/(\u03C1 U^2)$', size = 20)
+cbar.set_label('$\u03C4_{xx}/(\u03B7 U/L)$', size = 20)
 
 #-- define function, which is an argument for the method animation.FuncAnimation() and is called for each frame
 def fplot(frame_number):

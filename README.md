@@ -130,7 +130,7 @@ and
 
 $$ v_{i,j}^{n+1} = \widetilde v_{i,j} -\Delta t\nabla p^{n+1}$$
 
-&emsp; In order to acquire the pressure distribtuion, the divergence of the equation above provides a Laplacian equation for the pressure,
+&emsp; In order to acquire the pressure distribution, the divergence of the equation above provides a Laplacian equation for the pressure,
 
 $$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \left( \frac{\partial \widetilde u_{i,j}}{\partial x} + \frac{\partial \widetilde v_{i,j}}{\partial y} \right) ,$$
 

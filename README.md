@@ -168,11 +168,11 @@ $$ V_{i,j}^{n+1} = \widetilde V_{i,j} - \Delta t \left( \frac{p_{i,j+1}^{n+1} - 
 
 ### **Velocity and pressure distribution for $Re = 0.1$, $Wi = 0.1$, and $\beta = 0$ with $CFL \leq 0.5$ using the DCU method on a 51x51 cell grid over the time interval $[0, 1]$**
 
-https://github.com/npalex/Lid-driven-cavity-Jeffrey-fluid/assets/169947150/036283b1-9ae7-4406-95d7-0717a1f9f82f
+https://github.com/npalex/Lid-driven-cavity-Jeffrey-fluid/assets/169947150/11a935d7-ab03-41b9-a9f7-610f9f7d0b18
 
 ### **Streamlines and normal stress distribution for $Re = 0.1$, $Wi = 0.1$, and $\beta = 0$ with $CFL \leq 0.5$ using the DCU method on a 51x51 cell grid over the time interval $[0, 1]$**
 
-https://github.com/npalex/Lid-driven-cavity-Jeffrey-fluid/assets/169947150/1933b1fb-19d0-4952-a58e-c4363527b716
+https://github.com/npalex/Lid-driven-cavity-Jeffrey-fluid/assets/169947150/b7dafca9-ee24-4e3e-8a08-d3b3e528071a
 
 ## **References**:
 

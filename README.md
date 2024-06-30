@@ -166,17 +166,9 @@ $$ V_{i,j}^{n+1} = \widetilde V_{i,j} - \Delta t \left( \frac{p_{i,j+1}^{n+1} - 
 
 ## **Results**:
 
-### **Streamlines and pressure distribution for $Re = 1000$ and $CFL \leq 0.9$ using the DCU method on a 71x71 cell grid over the time interval $[0, 40]$**
+### **Velocity and pressure distribution for $Re = 0.1$, $Wi = 0.1$, and $\beta = 0$ with $CFL \leq 0.5$ using the DCU method on a 51x51 cell grid over the time interval $[0, 1]$**
 
-https://github.com/npalex/Lid-driven-cavity/assets/169947150/b920cc8c-8b3f-41e6-be31-45cd7e1039b1
-
-Note, there are significant checkerboard oscillations in pressure. However, the oscillations are less prominent when using the CTU method with $CFL \leq 0.5$, as shown in the following video: 
-
-https://github.com/npalex/Lid-driven-cavity/assets/169947150/861f56f0-6931-4812-be99-e4c5d8761bd8
-
-### **Numerical results for the x-component of the velocity along a vertical line through the center of the cavity are compared with those of Ghia et al.<sup>5</sup> for $Re = 100, 400,$ and $1000$**
-
-<img src="https://github.com/npalex/Lid-driven-cavity/assets/169947150/9405887d-f39f-4f59-982d-b6b38b85c67b" width="600">
+### **Streamlines and normal stress distribution for $Re = 0.1$, $Wi = 0.1$, and $\beta = 0$ with $CFL \leq 0.5$ using the DCU method on a 51x51 cell grid over the time interval $[0, 1]$**
 
 ## **References**:
 

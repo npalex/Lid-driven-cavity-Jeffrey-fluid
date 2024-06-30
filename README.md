@@ -138,7 +138,7 @@ $$ v_{i,j}^{n+1} = \widetilde v_{i,j} -\Delta t\nabla p^{n+1}$$
 
 $$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \left( \frac{\partial \widetilde u_{i,j}}{\partial x} + \frac{\partial \widetilde v_{i,j}}{\partial y} \right) ,$$
 
-which is then discretized with Nuemann boundary conditions to produce a system of linear equations, $Ax = b$. 
+which is then discretized with Neumann boundary conditions to produce a system of linear equations, $Ax = b$. 
 However, the matrix $A$ is singular because the equation set has an inifinite number of solutions within an arbitrary reference pressure. 
 Hence, a ficticious source term $C_0 p^{n+1}$ has been added with proportionality constant $C_0$, 
 which is defined on the order of 1e-9 to render the influence of the source negligble, so that $A$ is non-singular.  

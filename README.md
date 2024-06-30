@@ -132,11 +132,7 @@ $$ v_{i,j}^{n+1} = \widetilde v_{i,j} -\Delta t\nabla p^{n+1}$$
 
 &emsp; In order to acquire the pressure distribtuion, the divergence of the equation above provides a Laplacian equation for the pressure,
 
-$$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \nabla \cdot \widetilde u_{i,j} ,$$
-
-and
-
-$$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \nabla \cdot \widetilde v_{i,j} ,$$
+$$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \left(\partial \frac{\partial \widetilde u_{i,j}}{\partial x} + \partial \widetilde v_{i,j}}{\partial y} \right) ,$$
 
 which is then discretized with Nuemann boundary conditions to produce a system of linear equations, $Ax = b$. 
 However, the matrix $A$ is singular because the equation set has an inifinite number of solutions within an arbitrary reference pressure. 

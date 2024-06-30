@@ -2,11 +2,11 @@
 subroutine rpn2(ixy,maxm,meqn,mwaves,maux,mbc,mx,ql,qr,auxl,auxr,wave,s,amdq,apdq)
 ! =====================================================
 
-! Roe-solver for the 2D incompressible Navier Stokes equations
-! solve Riemann problems along one slice of data.
+! Roe-solver for the 2D incompressible Cauchy momentum equations
+! 	and the viscoelastic model for a Maxwell Fluid
 
-! waves: 2
-! equations: 2
+! waves: 5
+! equations: 5
 
 ! Conserved quantities:
 !       1 x_momentum

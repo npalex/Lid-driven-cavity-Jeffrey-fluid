@@ -3,6 +3,7 @@ subroutine rpt2(ixy,imp,maxm,meqn,mwaves,maux,mbc,mx,ql,qr,aux1,aux2,aux3,asdq,b
 ! =====================================================
     implicit double precision (a-h,o-z)
 
+!	  # Note, this transverse Riemann solver is not used.
 !     # Riemann solver in the transverse direction for the incompressible 
 !	  # Navier Stokes equations.
 !     # Split asdq (= A^* \Delta q, where * = + or -)

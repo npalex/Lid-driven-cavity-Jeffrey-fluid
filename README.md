@@ -116,14 +116,6 @@ and $\delta^2_x$ denotes the central difference of the 2nd partial derivative wi
 
 ### **Step 3. Update the edge velocities for diffusion:**
 
-&emsp;So far, the velocity field $(\widetilde u, \widetilde v)$ is not divergence free. In order to satisfy continuity, the vector field $(\widetilde u, \widetilde v)$ is projected into a divergence-free vector field by correcting the result for pressure-driven flow via
-
-$$ u_{i,j}^{n+1} = \widetilde u_{i,j} -\Delta t\nabla p^{n+1}$$
-
-and
-
-$$ v_{i,j}^{n+1} = \widetilde v_{i,j} -\Delta t\nabla p^{n+1}.$$
-
 &emsp; The velocities at the edges of each grid cell are updated via linear interpolation:
 
 $$ \widetilde q_{i-\frac{1}{2},j} = \frac{\widetilde Q_{i-1,j} + \widetilde Q_{i,j}}{2} $$
@@ -136,6 +128,9 @@ $$ \nabla^2 p^{n+1} = \frac{1}{\Delta t} \nabla \cdot \widetilde q_{i,j} ,$$
 
 which is then discretized with Nuemann boundary conditions to produce a system of linear equations, $Ax = b$. However, the matrix $A$ is singular because the equation set has an inifinite number of solutions within an arbitrary reference pressure. Hence, a ficticious source term $C_0 p^{n+1}$ has been added with proportionality constant $C_0$, which is defined on the order of 1e-9 to render the influence of the source negligble, so that $A$ is non-singular.  
 
+&emsp;So far, the solution $\widetilde q$ is not divergence free. In order to satisfy continuity, the vector field $\widetilde q$ is projected into a divergence-free vector field by correcting the result for pressure-driven flow via
+
+$$ q_{i,j}^{n+1} = \widetilde q_{i,j} -\Delta t\nabla p^{n+1}$$
 
 ### **Step 5. Update the edge velocities for pressure-driven flow:**
 
